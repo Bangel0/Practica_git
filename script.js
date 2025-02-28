@@ -43,29 +43,95 @@ if (usuario === 'Admin') {
     let cuentaDos = 987654321
     let valorOperacion = 0
 
-    opcion = Number(prompt(
-      ' Selecione: \n1- Consultar saldo\n2- Retirar dinero\n3- Consignar dinero(cuenta propia)\n4- Transferir dinero (otras cuentas)\n5- Salir '
-    ))
+    opcion = Number(
+      prompt(
+        ' Selecione: \n1- Consultar saldo\n2- Retirar dinero\n3- Consignar dinero(cuenta propia)\n4- Transferir dinero (otras cuentas)\n5- Salir '
+      )
+    )
     switch (opcion) {
       case 1:
-      console.log(`Su saldo es: ${saldoCuenta}`)
-      break;
+        console.log(`Su saldo es: ${saldoCuenta}`)
+        break
       case 2:
-      
-      break;
+        valorOperacion = parseFloat(prompt('Ingrese el valor a retirar: '))
+        if (valorOperacion <= saldoCuenta) {
+          saldoCuenta -= valorOperacion
+          console.log(`Retirado ${valorOperacion}, su saldo es: ${saldoCuenta}`)
+        } else {
+          console.log('No hay suficiente saldo')
+        }
+        break;
       case 3:
-      
-      break;
+        valorOperacion = parseFloat(prompt('ingrese el valor a consignar '))
+        if (valorOperacion < 0)
+          console.log('No se puede consignar un valor negativo')
+        else {
+          saldoCuenta += valorOperacion
+          console.log(
+            `Consignado ${valorOperacion}, su saldo es: ${saldoCuenta}`
+          )
+        }
+        break;
       case 4:
-      
-      break;
+
+      opcion = Number (prompt('Ingrese el numero de cuenta: '));
+      switch (opcion) {
+        case cuentaUno:
+          valorOperacion = Number(prompt('Ingrese el valor a transferir:'))
+          if (valorOperacion <= saldoCuenta) {
+            saldoCuenta -= valorOperacion
+            console.log( 'sunuevo saldo es: ' + saldoCuenta);
+          }else{
+            console.log('No hay suficiente saldo')
+          }
+            
+          break;
+          case cuentaDos:
+            valorOperacion = Number(prompt('Ingrese el valor a transferir:'))
+            if (valorOperacion <= saldoCuenta) {
+              saldoCuenta -= valorOperacion
+              console.log( 'su nuevo saldo es: ' + saldoCuenta);
+            }else{
+              console.log('No hay suficiente saldo')
+            }
+            break;
+          case 5:
+            console.log('Hasta pronto...');
+            break;
+          default:
+              console.log('Opción no válida');
+              break;
+      }
+
+
+
+
+
+
+
+
+
+        // let cuentaDestino = prompt('Ingrese el número de cuenta de destino ')
+        // if (cuentaDestino === cuentaUno.toString() || cuentaDestino === cuentaDos.toString()) {
+        //   valorOperacion = parseFloat(prompt('Ingrese el valor a transferir '))
+        //   if (valorOperacion <= saldoCuenta) {
+        //     saldoCuenta -= valorOperacion
+        //     console.log(
+        //       `Transferido ${valorOperacion} a la cuenta ${cuentaDestino}, su saldo es: ${saldoCuenta}`
+        //     )
+        //   } else {
+        //     console.log('No hay suficiente saldo')
+        //   }
+        
+        break;
       case 5:
-      
-      break;
+        break;
+      case 6:
+        break;
       default:
-      break;
+        break;
     }
-  }else{
+  } else {
     console.log('Contraseña incorrecta')
   }
 } else {
